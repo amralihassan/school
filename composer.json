@@ -32,10 +32,17 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Staff\\": "app/Modules/staff"
         },
+        "files": [
+            "app/Http/helpers/publicHelper.php",
+            "app/Http/helpers/pathHelper.php",
+            "app/Http/helpers/routeHelper.php"
+        ],
         "classmap": [
             "database/seeds",
+            "app/Modules/staff/database/seeds",
             "database/factories"
         ]
     },

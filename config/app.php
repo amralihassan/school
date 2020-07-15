@@ -165,7 +165,10 @@ return [
         /*
          * Package Service Providers...
          */
-
+        /**
+         * Modules Service Provide
+         */
+        Staff\Providers\StaffServiceProvider::class,
         /*
          * Application Service Providers...
          */
