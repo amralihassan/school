@@ -11,11 +11,17 @@ class AdminAuth extends Controller
     {
         return view('admin.auth.login');
     }
+    
     public function setLogin(LoginRequest $request)
     {
         $rememberme = $request->input('rememberme')==1 ?true:false;
+
         if (adminAuth()->attempt(['username'=>$request->input('username'),'password'=>$request->input('password')],$rememberme)) {
             session()->put('login',true);
+
+            if (!session()->has('lang')) {
+                session()->put('lang',authInfo()->preferredLanguage);
+            }
 
             return 'login';
         }

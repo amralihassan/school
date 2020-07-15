@@ -28,4 +28,11 @@ class LoginRequest extends FormRequest
             'password'   => 'required'
         ];
     }
+    public function messages()
+    {
+        return [
+            'username.required' => trans('admin.username_required'),
+            'password.required' => trans('admin.password_required'),
+        ];
+    }
 }
