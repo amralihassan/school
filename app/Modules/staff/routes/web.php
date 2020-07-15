@@ -6,8 +6,5 @@ $moduleName = basename(dirname(__DIR__));
  * session access for your routes you can use that middleware group
  */
 Route::namespace(getNamespaceController($moduleName))->middleware(['web'])->group(function() use($moduleName){
-        // parents route
-    Route::get('/test',function(){
-        dd('testsssssssss');
-    });
+
 });
