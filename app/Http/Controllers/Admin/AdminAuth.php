@@ -9,9 +9,13 @@ class AdminAuth extends Controller
 {
     public function login()
     {
-        return view('admin.auth.login');
+        if (session()->has('login') == true) {
+            return view('layouts.cpanel');
+        }else{
+            return view('admin.auth.login');
+        }
     }
-    
+
     public function setLogin(LoginRequest $request)
     {
         $rememberme = $request->input('rememberme')==1 ?true:false;
@@ -23,8 +27,16 @@ class AdminAuth extends Controller
                 session()->put('lang',authInfo()->preferredLanguage);
             }
 
-            return 'login';
+            return redirect(aurl('dashboard'));
         }
-        return redirect(aurl('login'));
+        return view('admin.auth.login');
+    }
+
+    public function logout()
+    {
+    	adminAuth()->logout();
+        session()->forget('login');
+
+    	return redirect(aurl('login'));
     }
 }
