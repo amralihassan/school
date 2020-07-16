@@ -15,6 +15,9 @@
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
   rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
+  {{-- sweet alert style --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
+
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/vendors.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/forms/icheck/icheck.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/forms/icheck/custom.css')}}">
@@ -29,6 +32,7 @@
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/pages/login-register.css')}}">
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
+  <script src="{{ asset('js/app.js') }}"></script>
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/assets/css/style-rtl.css')}}">
   <!-- END Custom CSS-->
   <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
@@ -37,6 +41,10 @@
       body,h1,h2,h3,h4,h5,h6,a,li,p {
           font-family: 'Cairo', sans-serif;
       }
+    .sweet-alert h2 {font-family: 'Cairo', sans-serif;font-weight: 500;}
+    .sweet-alert p {font-family: 'Cairo', sans-serif;}
+    .sweet-alert button {font-family: 'Cairo', sans-serif;}
+    .sweet-alert {font-family: 'Cairo', sans-serif;}
   </style>
 </head>
 <body class="vertical-layout vertical-menu 1-column   menu-expanded blank-page blank-page"
@@ -68,6 +76,11 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                                 @endforeach
                             </div>
                         @endif
+                        @if (session()->has('error'))
+                            <div class="alert alert-danger">
+                                {{session('error')}}
+                            </div>
+                        @endif
                    </div>
                 <div class="card-content">
                   <div class="card-body">
@@ -97,5 +110,10 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="{{asset('cpanel/app-assets/js/scripts/forms/form-login-register.js')}}" type="text/javascript"></script>
   <!-- END PAGE LEVEL JS-->
+{{-- sweet alert --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+{{-- message alerts --}}
+@include('sweet::alert')
 </body>
 </html>

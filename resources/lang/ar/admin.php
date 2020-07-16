@@ -8,7 +8,7 @@ return
     'forgetPassword'                        => 'نسيت كلمة المرور',
     'username_required'                     => 'يجب ادخال اسم المستخدم',
     'password_required'                     => 'يجب ادخال كلمة المرور',
-    '' => '',
+    'invalid_login'                         => 'خطأ في بيانات الدخول',
     '' => '',
     '' => '',
     '' => '',

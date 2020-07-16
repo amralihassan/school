@@ -27,10 +27,23 @@
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/core/menu/menu-types/vertical-menu.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/cryptocoins/cryptocoins.css')}}">
+  {{-- sweet alert style --}}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
   <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}">
   <!-- END Custom CSS-->
+  <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+
+  <style>
+      body,h1,h2,h3,h4,h5,h6,a,li,p {
+          font-family: 'Cairo', sans-serif;
+      }
+    .sweet-alert h2 {font-family: 'Cairo', sans-serif;font-weight: 500;}
+    .sweet-alert p {font-family: 'Cairo', sans-serif;}
+    .sweet-alert button {font-family: 'Cairo', sans-serif;}
+    .sweet-alert {font-family: 'Cairo', sans-serif;}
+  </style>
 </head>
 <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar"
 data-open="click" data-menu="vertical-menu" data-col="2-columns">
@@ -60,6 +73,10 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
   <!-- END MODERN JS-->
   <!-- BEGIN PAGE LEVEL JS-->
   <script src="{{asset('cpanel/app-assets/js/scripts/pages/dashboard-crypto.js')}}" type="text/javascript"></script>
-  <!-- END PAGE LEVEL JS-->
+{{-- sweet alert --}}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
+{{-- message alerts --}}
+@include('sweet::alert')
 </body>
 </html>

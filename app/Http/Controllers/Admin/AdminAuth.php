@@ -26,10 +26,10 @@ class AdminAuth extends Controller
             if (!session()->has('lang')) {
                 session()->put('lang',authInfo()->preferredLanguage);
             }
-
             return redirect(aurl('dashboard'));
         }
-        return view('admin.auth.login');
+
+        return redirect(aurl('login'))->with('error',trans('admin.invalid_login'));
     }
 
     public function logout()
