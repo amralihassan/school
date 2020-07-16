@@ -40,4 +40,8 @@ class Admin extends Authenticatable
     {
         return 'username';
     }
+    public function settings()
+    {
+        $this->hasOne(App\Models\Setting::class);
+    }
 }

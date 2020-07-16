@@ -53,3 +53,9 @@ if (!function_exists('lang')) {
 		}
 	}
 }
+if (!function_exists('settingHelper')) {
+	function settingHelper()
+	{
+		return \App\Models\Setting::orderBy('id','desc')->first();
+	}
+}

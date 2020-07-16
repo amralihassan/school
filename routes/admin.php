@@ -21,7 +21,6 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             else{
                 Route::get('/login','AdminAuth@login');
             }
-
         });
 
     // ================================= LOGOUT ==============================================
@@ -30,5 +29,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             Route::any('/logout','AdminAuth@logout')->name('logout');
             Route::get('/','DashboardController@index');
             Route::get('/dashboard','DashboardController@index');
+
+            // update settings
+            Route::get('/settings','SettingController@siteSettingPage')->name('site.settings');
+            Route::post('update/settings','SettingController@updateSettings')->name('update.settings');
         });
 });
