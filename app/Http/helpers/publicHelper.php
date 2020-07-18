@@ -59,3 +59,14 @@ if (!function_exists('settingHelper')) {
 		return \App\Models\Setting::orderBy('id','desc')->first();
 	}
 }
+if (!function_exists('history')) {
+	function history($section,$crud,$history)
+	{
+        \App\Models\History::create([
+            'section'   => $section,
+            'history'   => $history,
+            'crud'      => $crud,
+            'user_id'   => auth()->id()
+        ]);
+	}
+}

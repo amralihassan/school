@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
-
+use App\Models\History;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -36,6 +36,7 @@ class AdminController extends Controller
                     ->rawColumns(['action','check'])
                     ->make(true);
         }
+        history('system','index','User accounts were viewed');
         return view('admin.accounts.index',['title'=>trans("admin.users_accounts")]);
     }
 
@@ -83,9 +84,8 @@ class AdminController extends Controller
      */
     public function update(AdminRequest $request, $id)
     {
-        // dd($request->get('status'));
-        $admin = Admin::findOrFail($id);
-        $admin->update($request->only(['name','username','email','lang','status']));
+        Admin::findOrFail($id);
+
         alert()->success(trans('msg.updated_successfully'), trans('admin.edit_user_account'));
         return redirect()->route('accounts.index');
     }
