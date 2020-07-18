@@ -131,7 +131,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="userinput8">{{ trans('admin.arabic_description') }}</label>
+                          <label class="col-md-3 label-control" >{{ trans('admin.arabic_description') }}</label>
                           <div class="col-md-9">
                             <textarea id="userinput8" rows="6" class="form-control border-primary" name="arabicDescription"
                             placeholder="{{ trans('admin.arabic_description') }}">{{settingHelper()->arabicDescription}}</textarea>
@@ -140,7 +140,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="userinput8">{{ trans('admin.english_description') }}</label>
+                          <label class="col-md-3 label-control" >{{ trans('admin.english_description') }}</label>
                           <div class="col-md-9">
                             <textarea id="userinput8" rows="6" class="form-control border-primary" name="englishDescription"
                             placeholder="{{ trans('admin.english_description') }}">{{settingHelper()->englishDescription}}</textarea>
@@ -149,7 +149,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="userinput8">{{ trans('admin.keywords') }}</label>
+                          <label class="col-md-3 label-control" >{{ trans('admin.keywords') }}</label>
                           <div class="col-md-9">
                             <textarea id="userinput8" rows="6" class="form-control border-primary" name="keywords"
                             placeholder="{{ trans('admin.keywords') }}">{{settingHelper()->keywords}}</textarea>
@@ -158,7 +158,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="userinput8">{{ trans('admin.message_maintenance') }}</label>
+                          <label class="col-md-3 label-control" >{{ trans('admin.message_maintenance') }}</label>
                           <div class="col-md-9">
                             <textarea id="userinput8" rows="6" class="form-control border-primary" name="messageMaintenance"
                             placeholder="{{ trans('admin.message_maintenance') }}">{{settingHelper()->messageMaintenance}}</textarea>
@@ -167,7 +167,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="userinput8">{{ trans('admin.icon') }}</label>
+                          <label class="col-md-3 label-control" >{{ trans('admin.icon') }}</label>
                           <div class="col-md-9">
                             <input multiple="" type="file" id="id-input-file-31" name="icon"/>
                           </div>
@@ -175,7 +175,7 @@
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-md-3 label-control" for="userinput8">{{ trans('admin.logo') }}</label>
+                          <label class="col-md-3 label-control" >{{ trans('admin.logo') }}</label>
                           <div class="col-md-9">
                             <input multiple="" type="file" id="id-input-file-3" name="logo"/>
                           </div>
