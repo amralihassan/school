@@ -187,7 +187,7 @@
                     <button type="submit" class="btn btn-success">
                         <i class="la la-check-square-o"></i> {{ trans('admin.save_changes') }}
                       </button>
-                  <button type="button" class="btn btn-warning mr-1">
+                  <button type="button" class="btn btn-warning mr-1" onclick="location.href='{{aurl('dashboard')}}';">
                     <i class="ft-x"></i> {{ trans('admin.cancel') }}
                   </button>
                 </div>

@@ -12,7 +12,7 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
 
             if (session()->has('login')) {
                 if (adminAuth()->check()) {
-                    Route::get('/dashboard','DashboardController@index');;
+                    Route::get('/dashboard','DashboardController@index')->name('main.dashboard');
                 }
                 else{
                     Route::get('/login','AdminAuth@login');
@@ -28,10 +28,20 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     Route::group(['middleware'=>'admin'],function(){
             Route::any('/logout','AdminAuth@logout')->name('logout');
             Route::get('/','DashboardController@index');
-            Route::get('/dashboard','DashboardController@index');
+            Route::get('/dashboard','DashboardController@index')->name('main.dashboard');
+
+            // change password
+            Route::get('/password','AdminAuth@changePassword');
+            Route::post('/update/password','AdminAuth@updateChangePassword')->name('update.password');
 
             // update settings
             Route::get('/settings','SettingController@siteSettingPage')->name('site.settings');
             Route::post('update/settings','SettingController@updateSettings')->name('update.settings');
+
+            // admin
+            Route::resource('/accounts','AdminController')->except('show','destroy');
+            Route::post('accounts/destroy','AdminController@destroy')->name('accounts.destroy');
+
+
         });
 });

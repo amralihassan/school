@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
 class AdminAuth extends Controller
@@ -36,7 +37,45 @@ class AdminAuth extends Controller
     {
     	adminAuth()->logout();
         session()->forget('login');
-
+        alert()->success(trans('msg.log_out'), trans('msg.good_bye'));
     	return redirect(aurl('login'));
+    }
+
+    public function changePassword()
+    {
+        $admin = Admin::find(authInfo()->id);
+        return view('admin.auth.changePassword',['title'=>trans('admin.change_password'),'admin'=>$admin]);
+    }
+
+    private function passwordRules()
+    {
+        return [
+            // rules
+            'password'              => 'required',
+            'cPassword'             => 'required|same:password',
+        ];
+    }
+
+    private function msgPasswordRules()
+    {
+        return [
+            // message
+            'password.required'      => trans('msg.password_required'),
+            'cPassword.required'     => trans('msg.confirm_password_required'),
+            'cPassword.same'         => trans('msg.match_password'),
+        ];
+    }
+
+    public function updateChangePassword()
+    {
+        // validation
+        $this->validate(request(),$this->passwordRules(),$this->msgPasswordRules());
+        // save data
+        $admin = Admin::findOrFail(authInfo()->id);
+        $admin->password   = request('password');
+        $admin->save();
+
+        alert()->success('', trans('msg.updated_password'));
+        return back();
     }
 }

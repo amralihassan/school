@@ -16,7 +16,7 @@ class Admin extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','username', 'email', 'password','image'
+        'name','username', 'email', 'password','image','lang','status'
     ];
 
     /**
@@ -43,5 +43,22 @@ class Admin extends Authenticatable
     public function settings()
     {
         $this->hasOne(App\Models\Setting::class);
+    }
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+    public function getStatusAttribute()
+    {
+        return $this->attributes['status'] == 'enable' ? trans('admin.active') : trans('admin.inactive');
+    }
+    public function getLangAttribute()
+    {
+        return $this->attributes['lang'] == 'en' ? trans('admin.en') : trans('admin.ar');
+    }
+    public function getUsernameAttribute($value)
+    {
+        return $this->attributes['username'] = $value;
+
     }
 }

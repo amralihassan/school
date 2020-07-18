@@ -15,6 +15,7 @@
   <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css"
   rel="stylesheet">
   <!-- BEGIN VENDOR CSS-->
+  @yield('styles')
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/vendors.css')}}">
   <!-- END VENDOR CSS-->
   <!-- BEGIN MODERN CSS-->
@@ -26,7 +27,6 @@
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/css-rtl/core/colors/palette-gradient.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/cryptocoins/cryptocoins.css')}}">
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/fonts/line-awesome/css/line-awesome.min.css')}}">
-  @yield('styles')
   {{-- sweet alert style --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
   <!-- END Page Level CSS-->
@@ -63,6 +63,7 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
 
   <!-- BEGIN VENDOR JS-->
   <script src="{{asset('cpanel/app-assets/vendors/js/vendors.min.js')}}" type="text/javascript"></script>
+  @yield('script')
   <!-- BEGIN VENDOR JS-->
   <!-- BEGIN PAGE VENDOR JS-->
   <script src="{{asset('cpanel/app-assets/vendors/js/charts/chart.min.js')}}" type="text/javascript"></script>
@@ -80,6 +81,6 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 {{-- message alerts --}}
 @include('sweet::alert')
-@yield('script')
+
 </body>
 </html>

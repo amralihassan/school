@@ -163,10 +163,10 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i>{{ trans('admin.profile') }}</a>
                 <a class="dropdown-item" href={{ route('site.settings') }}><i class="ft-settings"></i> {{ trans('admin.site_setting') }}</a>
-                <a class="dropdown-item" href="#"><i class="ft-check-square"></i> {{ trans('admin.users_accounts') }}</a>
+                <a class="dropdown-item" href="{{route('accounts.index')}}"><i class="ft-users"></i> {{ trans('admin.users_accounts') }}</a>
                 <a class="dropdown-item" href="#"><i class="ft-message-square"></i> {{ trans('admin.logs') }}</a>
                 <a class="dropdown-item" href="#"><i class="ft-message-square"></i> {{ trans('admin.roles') }}</a>
-                <a class="dropdown-item" href="#"><i class="ft-message-square"></i> {{ trans('admin.change_password') }}</a>
+                <a class="dropdown-item" href="{{aurl('password')}}"><i class="ft-lock"></i> {{ trans('admin.change_password') }}</a>
                 <div class="dropdown-divider"></div><a class="dropdown-item" href="{{route('logout')}}"><i class="ft-power"></i> {{ trans('admin.logout') }}</a>
               </div>
             </li>

@@ -21,7 +21,7 @@ class CreateAdminsTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('image')->nullable();
-            $table->string('lang')->default('ar');
+            $table->enum('lang',['ar','en'])->default('ar');
             $table->enum('status',['enable','disable'])->default('enable');
             $table->integer('adminGroupId')->nullable();
             $table->rememberToken();
