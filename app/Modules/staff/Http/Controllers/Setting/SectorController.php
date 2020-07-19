@@ -111,14 +111,13 @@ class SectorController extends Controller
     {
         $sectors = Sector::all();
         foreach ($sectors as $sector) {
-            $sector->setAttribute('sectorName',session('lang')!='ar'?$sector->englishSector:$sector->arabicSector);
+            $sector->setAttribute('sectorName',session('lang')!='en'?$sector->englishSector:$sector->arabicSector);
         }
         return $sectors;
     }
     public function getSectors()
     {
         $output = "";
-        $sectors = $this->sectors();
         $output .='<option value="">'.trans('staff::admin.select').'</option>';
         foreach ($this->sectors() as $sector) {
             $output .= ' <option value="'.$sector->id.'">'.$sector->sectorName.'</option>';
