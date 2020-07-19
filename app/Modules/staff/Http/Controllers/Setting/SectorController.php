@@ -107,4 +107,46 @@ class SectorController extends Controller
         }
         return response(['status'=>true]);
     }
+    private function sectors()
+    {
+        $sectors = Sector::all();
+        foreach ($sectors as $sector) {
+            $sector->setAttribute('sectorName',session('lang')!='ar'?$sector->englishSector:$sector->arabicSector);
+        }
+        return $sectors;
+    }
+    public function getSectors()
+    {
+        $output = "";
+        $sectors = $this->sectors();
+        $output .='<option value="">'.trans('staff::admin.select').'</option>';
+        foreach ($this->sectors() as $sector) {
+            $output .= ' <option value="'.$sector->id.'">'.$sector->sectorName.'</option>';
+        };
+        return json_encode($output);
+    }
+
+    public function getSectorsWithNull()
+    {
+        $output = "";
+        $output .='<option value="">'.trans('staff::admin.select').'</option>';
+        foreach ($this->sectors() as $sector) {
+            $output .= ' <option value="'.$sector->id.'">'.$sector->sectorName.'</option>';
+        };
+        $output .='<option value="Null">'.trans('staff::admin.null').'</option>';
+        return json_encode($output);
+    }
+
+    public function getSectorsSelected()
+    {
+        $id = request()->get('sectorId');
+        $output = "";
+        $output .='<option value="">'.trans('staff::admin.select').'</option>';
+        foreach ($this->sectors() as $sector) {
+            $selected = $sector->id == $id?"selected":"";
+            $output .= ' <option '.$selected.' value="'.$sector->id.'">'.$sector->sectorName.'</option>';
+        };
+        $output .='<option value="Null">'.trans('staff::admin.null').'</option>';
+        return json_encode($output);
+    }
 }

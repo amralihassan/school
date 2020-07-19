@@ -50,7 +50,7 @@
                         <div class="form-group row">
                           <label class="col-md-3 label-control" >{{ trans('staff::admin.sort') }}</label>
                           <div class="col-md-9">
-                            <input type="integer"  class="form-control border-primary" value="{{$sector->sort}}" placeholder="{{ trans('staff::admin.sort') }}"
+                            <input type="number" min="1" max="100"  class="form-control border-primary" value="{{$sector->sort}}" placeholder="{{ trans('staff::admin.sort') }}"
                             name="sort" >
                           </div>
                         </div>

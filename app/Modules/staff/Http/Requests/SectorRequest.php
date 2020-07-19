@@ -30,7 +30,7 @@ class SectorRequest extends FormRequest
             'sort'          		 => 'numeric',
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
             // message
