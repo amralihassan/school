@@ -1,9 +1,7 @@
 @extends('layouts.cpanel')
-
 @section('styles')
   <link rel="stylesheet" type="text/css" href="{{asset('cpanel/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
 @endsection
-
 @section('content')
 <div class="content-header row">
     <div class="content-header-left col-md-6 col-12 mb-2">
@@ -12,7 +10,9 @@
         <div class="breadcrumb-wrapper col-12">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{aurl('dashboard')}}">{{ trans('admin.dashboard') }}</a></li>
-            <li class="breadcrumb-item active">{{$title}}</li>
+            <li class="breadcrumb-item"><a href="{{route('staff.setting')}}">{{ trans('staff::admin.settings') }}</a></li>
+            <li class="breadcrumb-item active">{{$title}}
+            </li>
           </ol>
         </div>
       </div>
@@ -35,11 +35,10 @@
                             <tr>
                                 <th><input type="checkbox" class="ace" /></th>
                                 <th>#</th>
-                                <th>{{trans('admin.account_name')}}</th>
-                                <th>{{trans('admin.username')}}</th>
-                                <th>{{trans('admin.email')}}</th>
-                                <th>{{trans('admin.account_status')}}</th>
-                                <th>{{trans('admin.edit')}}</th>
+                                <th>{{trans('staff::admin.arabic_sector')}}</th>
+                                <th>{{trans('staff::admin.english_sector')}}</th>
+                                <th>{{trans('staff::admin.sort')}}</th>
+                                <th>{{trans('staff::admin.edit')}}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,26 +61,25 @@
             buttons: [
                 // new btn
                 {
-                    "text": "{{trans('admin.new_account')}}",
+                    "text": "{{trans('staff::admin.new_sector')}}",
                     "className": "btn btn-success buttons-print btn-success mr-1",
                     action : function ( e, dt, node, config ) {
-                        window.location.href = "{{route('accounts.create')}}";
+                        window.location.href = "{{route('sector.create')}}";
                         }
                 },
                 // delete btn
-                @include('layouts.includes.datatables._deleteBtn',['route'=>'accounts.destroy'])
+                @include('layouts.includes.datatables._deleteBtn',['route'=>'sector.destroy'])
 
                 // default btns
                 @include('layouts.includes.datatables._datatableBtn')
             ],
-          ajax: "{{ route('accounts.index') }}",
+          ajax: "{{ route('sector.index') }}",
           columns: [
-              {data: 'check',       name: 'check', orderable: false, searchable: false},
-              {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-              {data: 'name',        name: 'name'},
-              {data: 'username',    name: 'username'},
-              {data: 'email', 		name: 'email'},
-              {data: 'status', 	    name: 'status'},
+              {data: 'check',               name: 'check', orderable: false, searchable: false},
+              {data: 'DT_RowIndex',         name: 'DT_RowIndex', orderable: false, searchable: false},
+              {data: 'arabicSector',        name: 'arabicSector'},
+              {data: 'englishSector',       name: 'englishSector'},
+              {data: 'sort', 		        name: 'sort'},
               {data: 'action', 	    name: 'action', orderable: false, searchable: false},
           ],
           @include('layouts.includes.datatables._datatableLang')

@@ -62,7 +62,7 @@
               <li><a class="menu-item" href="dashboard-crypto.html" data-i18n="nav.dash.crypto">{{ trans('staff::admin.applicants') }}</a></li>
             </ul>
         </li>
-        <li class=" nav-item"><a href="{{route('staff.setting')}}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('staff::admin.settings') }}</span></a>
+        <li class=" nav-item"><a href="{{route('staff.setting')}}"><i class="la la-gear"></i><span class="menu-title" data-i18n="nav.support_raise_support.main">{{ trans('staff::admin.settings') }}</span></a>
         </li>
       </ul>
     </div>

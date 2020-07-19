@@ -7,9 +7,9 @@ $moduleName = basename(dirname(__DIR__));
  */
 Route::namespace(getNamespaceController($moduleName))->middleware(['web','admin'])->group(function() use($moduleName){
     Route::prefix(buildPrefix($moduleName))->group(function(){
-        Route::get('settings','Setting\StaffSettingController@index')->name('staff.setting');
-
-
+        Route::group(['namespace'=>'Setting'],function(){
+            Route::get('settings','StaffSettingController@index')->name('staff.setting');
+            require 'setting.php';
+        });
     });
-
 });

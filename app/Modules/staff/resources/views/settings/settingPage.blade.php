@@ -12,7 +12,7 @@
             <div class="card-body">
                 <div class="simple-line-icons overflow-hidden row">
                   <div class="col-md-4 col-sm-6 col-12 ">
-                    <h4><a href="#" class="fonticon-classname"><i class="la la-hand-o-left"></i> {{ trans('staff::admin.sectors') }} </a></h4>
+                    <h4><a href="{{route('sector.index')}}" class="fonticon-classname"><i class="la la-hand-o-left"></i> {{ trans('staff::admin.sectors') }} </a></h4>
                     <h4><a href="#" class="fonticon-classname"><i class="la la-hand-o-left"></i> {{ trans('staff::admin.departments') }} </a></h4>
                     <h4><a href="#" class="fonticon-classname"><i class="la la-hand-o-left"></i> {{ trans('staff::admin.sections') }} </a></h4>
                     <h4><a href="#" class="fonticon-classname"><i class="la la-hand-o-left"></i> {{ trans('staff::admin.positions') }} </a></h4>
