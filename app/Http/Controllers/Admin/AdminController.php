@@ -6,6 +6,7 @@ use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
 use App\Models\History;
 use Illuminate\Http\Request;
+use File;
 
 class AdminController extends Controller
 {
@@ -36,7 +37,6 @@ class AdminController extends Controller
                     ->rawColumns(['action','check'])
                     ->make(true);
         }
-        history('system','index','User accounts were viewed');
         return view('admin.accounts.index',['title'=>trans("admin.users_accounts")]);
     }
 
@@ -84,8 +84,8 @@ class AdminController extends Controller
      */
     public function update(AdminRequest $request, $id)
     {
-        Admin::findOrFail($id);
-
+        $admin = Admin::findOrFail($id);
+        $admin->update($request->except('_token','_method','/admin/admin/profile'));
         alert()->success(trans('msg.updated_successfully'), trans('admin.edit_user_account'));
         return redirect()->route('accounts.index');
     }
@@ -107,5 +107,53 @@ class AdminController extends Controller
             }
         }
         return response(['status'=>true]);
+    }
+
+    public function userProfile()
+    {
+        return view('admin.accounts.userProfile',['title'=> trans('admin.profile')]);
+    }
+    private function roleProfile()
+    {
+        return [
+            'imageProfile'       => 'image|mimes:jpg,jpeg,png|max:1024',
+        ];
+    }
+    private function msgProfile()
+    {
+        return [
+            'imageProfile.image' => trans('admin.logoImageValidate'),
+            'imageProfile.mimes' => trans('admin.logoMimesValidate'),
+        ];
+    }
+    public function updateProfile()
+    {
+        $data = $this->validate(request(),$this->roleProfile(),$this->msgProfile());
+
+        $data = request()->except('_token','_method','/admin/admin/profile');
+
+        if (request()->hasFile('imageProfile'))
+        {
+            // remove old image
+            $image_path = public_path("/images/imagesProfile/".authInfo()->imageProfile);
+            // return dd($image_path);
+            if(File::exists($image_path)) {
+                File::delete($image_path);
+            }
+            $imageProfile = request('imageProfile');
+            $fileName = time().'-'.$imageProfile->getClientOriginalName();
+            $location = public_path('images/imagesProfile');
+
+            $imageProfile->move($location,$fileName);
+            $data['imageProfile'] = $fileName;
+        }
+
+        Admin::where('id',authInfo()->id)->update($data);
+
+        session()->forget('lang');
+        session()->put('lang',authInfo()->preferredLanguage);
+
+        alert()->success(trans('msg.updated_successfully'), trans('admin.profile'));
+        return back();
     }
 }

@@ -17,7 +17,7 @@
     <div class="form-group row">
       <div class="col-md-6 col-12 text-center text-md-left">
         <fieldset>
-          <input type="checkbox" id="remember-me" class="chk-remember" name="rememberme">
+          <input type="checkbox" id="remember-me" class="chk-remember" name="rememberMe">
           <label for="remember-me">{{trans('admin.rememberme')}}</label>
         </fieldset>
       </div>

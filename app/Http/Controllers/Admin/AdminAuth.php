@@ -19,13 +19,17 @@ class AdminAuth extends Controller
 
     public function setLogin(LoginRequest $request)
     {
-        $rememberme = $request->input('rememberme')==1 ?true:false;
+        $rememberMe = $request->input('rememberMe')==1 ?true:false;
 
-        if (adminAuth()->attempt(['username'=>$request->input('username'),'password'=>$request->input('password')],$rememberme)) {
+        if (adminAuth()->attempt(['username'=>$request->input('username'),'password'=>$request->input('password')],$rememberMe))
+        {
+            if (authInfo()->status == trans('admin.inactive')) {
+                return redirect(aurl('login'))->with('error',trans('admin.inactive_account'));
+            }
             session()->put('login',true);
 
             if (!session()->has('lang')) {
-                session()->put('lang',authInfo()->preferredLanguage);
+                session()->put('lang',authInfo()->lang);
             }
             return redirect(aurl('dashboard'));
         }

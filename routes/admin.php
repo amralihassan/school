@@ -41,7 +41,9 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
             // admin
             Route::resource('/accounts','AdminController')->except('show','destroy');
             Route::post('accounts/destroy','AdminController@destroy')->name('accounts.destroy');
-
+            // user profile
+            Route::get('user-profile','AdminController@userProfile')->name('user-profile');
+            Route::post('user-profile','AdminController@updateProfile')->name('update.profile');
 
         });
 });

@@ -155,13 +155,14 @@
           <ul class="nav navbar-nav float-right">
             <li class="dropdown dropdown-user nav-item">
               <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                <span class="mr-1">Hello,
-                  <span class="user-name text-bold-700">John Doe</span>
+                <span class="mr-1">{{ trans('admin.hello') }},
+                  <span class="user-name text-bold-700">{{authInfo()->name}}</span>
                 </span>
                 <span class="avatar avatar-online">
-                  <img src="{{asset('')}}cpanel/app-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span>
+                  <img src="{{asset('/images/imagesProfile/'.authInfo()->imageProfile)}}" alt="avatar"><i></i></span>
               </a>
-              <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#"><i class="ft-user"></i>{{ trans('admin.profile') }}</a>
+            <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{route('user-profile')}}"><i class="ft-user"></i>{{ trans('admin.profile') }}</a>
                 <a class="dropdown-item" href={{ route('site.settings') }}><i class="ft-settings"></i> {{ trans('admin.site_setting') }}</a>
                 <a class="dropdown-item" href="{{route('accounts.index')}}"><i class="ft-users"></i> {{ trans('admin.users_accounts') }}</a>
                 <a class="dropdown-item" href="#"><i class="ft-message-square"></i> {{ trans('admin.logs') }}</a>

@@ -69,16 +69,18 @@ data-open="click" data-menu="vertical-menu" data-col="1-column">
                     <span>Login with Modern</span>
                   </h6>
                         @if($errors->any())
-                            <div class="alert alert-danger">
-                                @foreach($errors->all() as $error)
-                                    <!-- print all errors -->
-                                        {{$error}} . <br>
-                                @endforeach
+                            <div class="alert bg-danger alert-dismissible mb-2 text-center">
+                                <strong>
+                                    @foreach($errors->all() as $error)
+                                        <!-- print all errors -->
+                                            {{$error}} . <br>
+                                    @endforeach
+                                </strong>
                             </div>
                         @endif
                         @if (session()->has('error'))
-                            <div class="alert alert-danger">
-                                {{session('error')}}
+                            <div class="alert bg-danger alert-dismissible mb-2 text-center">
+                                <strong>{{session('error')}}</strong>
                             </div>
                         @endif
                    </div>

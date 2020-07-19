@@ -20,7 +20,7 @@ class CreateAdminsTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('image')->nullable();
+            $table->string('imageProfile')->nullable();
             $table->enum('lang',['ar','en'])->default('ar');
             $table->enum('status',['enable','disable'])->default('enable');
             $table->integer('adminGroupId')->nullable();
