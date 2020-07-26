@@ -1,4 +1,7 @@
 @extends('layouts.cpanel')
+@section('sidebar')
+    @include('layouts.includes.sidebars._main')
+@endsection
 @section('content')
 <div class="content-header row">
 </div>

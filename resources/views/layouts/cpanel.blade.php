@@ -52,7 +52,7 @@ data-open="click" data-menu="vertical-menu" data-col="2-columns">
   <!-- fixed-top-->
     @include('layouts.includes._nav')
   <!-- ////////////////////////////////////////////////////////////////////////////-->
-    @include('layouts.includes._sidebard')
+  @yield('sidebar')
   <div class="app-content content">
     <div class="content-wrapper">
         @yield('content')

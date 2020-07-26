@@ -28,7 +28,10 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'],function(){
     Route::group(['middleware'=>'admin'],function(){
             Route::any('/logout','AdminAuth@logout')->name('logout');
             Route::get('/','DashboardController@index');
+            // dashboards
             Route::get('/dashboard','DashboardController@index')->name('main.dashboard');
+            Route::get('/dashboard/admission','DashboardController@admission')->name('dashboard.admission');
+            Route::get('/dashboard/staff','DashboardController@staff')->name('dashboard.staff');
 
             // change password
             Route::get('/password','AdminAuth@changePassword');

@@ -9,6 +9,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard',['title'=>trans('staff::admin.dashboard')]);
+        return view('dashboards.dashboard',['title'=>trans('staff::admin.dashboard')]);
+    }
+    public function admission()
+    {
+        return view('dashboards.admission',['title'=>trans('admin.admissions')]);
+    }
+    public function staff()
+    {
+        return view('dashboards.staff',['title'=>trans('staff::admin.hr')]);
     }
 }
